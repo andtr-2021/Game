@@ -159,33 +159,33 @@ void drawImageWithOffset(int x, int y, unsigned long *imageData, int width, int 
     }
 }
 
-// // function to draw character at x, y
-// void drawScaledDown(int x, int y, unsigned long* bitmap, short originalWidth, short originalHeight,
-//     unsigned long color, unsigned long bg, short scale) {
-//     short scaledWidth = originalWidth / scale;
-//     short scaledHeight = originalHeight / scale;
-//     for (short i = 0; i < scaledHeight; i++) {
-//         for (short j = 0; j < scaledWidth; j++) {
-//             unsigned long pixel = bitmap[i * scale * originalWidth + j * scale];
-//             if (pixel != 0x00ffffff) {
-//                 drawPixelARGB32(x + j, y + i, color);
-//             }
-//             else {
-//                 drawPixelARGB32(x + j, y + i, bg);
-//             }
-//         }
-//     }
-// }
+// function to draw character at x, y
+void drawScaledDown(int x, int y, unsigned long* bitmap, short originalWidth, short originalHeight,
+    unsigned long color, unsigned long bg, short scale) {
+    short scaledWidth = originalWidth / scale;
+    short scaledHeight = originalHeight / scale;
+    for (short i = 0; i < scaledHeight; i++) {
+        for (short j = 0; j < scaledWidth; j++) {
+            unsigned long pixel = bitmap[i * scale * originalWidth + j * scale];
+            if (pixel != 0x00ffffff) {
+                drawPixelARGB32(x + j, y + i, color);
+            }
+            else {
+                drawPixelARGB32(x + j, y + i, bg);
+            }
+        }
+    }
+}
 
 
-// // function to draw string at x, y
-// void drawStrScaledDown(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor, short scale) {
+// function to draw string at x, y
+void drawStrScaledDown(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor, short scale) {
 
-//     for (int i = 0; i < my_strlen_array(str); i++)
-//     {   
+    for (int i = 0; i < my_strlen_array(str); i++)
+    {   
         
-//         drawScaledDown(x + i * charWidth / scale, y, str[i], charHeight, charWidth, textColor, bgColor, scale);
+        drawScaledDown(x + i * charWidth / scale, y, str[i], charHeight, charWidth, textColor, bgColor, scale);
 
-//     }
+    }
     
-// }
+}
