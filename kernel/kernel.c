@@ -284,6 +284,15 @@ void main()
     // Initialize frame buffer
     framebf_init();
 
+
+    drawBackground(0, 0);
+    // draw welcome to the game
+    unsigned long *welcome[20] = {epd_bitmap_w, epd_bitmap_e, epd_bitmap_l, epd_bitmap_c, epd_bitmap_o, epd_bitmap_m, epd_bitmap_e,  epd_bitmap_space, epd_bitmap_t, epd_bitmap_o, epd_bitmap_space, epd_bitmap_t, epd_bitmap_h, epd_bitmap_e, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e};
+    drawStrScaledDown(300, 300, welcome, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+    freeMemory(welcome);
+
+    wait_msec(5000000);
+
     // Start with image at index 0
     int ballX = 550, ballY = 650;
     // direction is the direction of the ball, 0 is the ball fly directly upward.
