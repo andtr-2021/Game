@@ -426,7 +426,7 @@ void main()
     // score is the score of the player.
     int scoreUser = 0;
     // life is the life of the player.
-    int lifeUser = 0;
+    int lifeUser = 3;
 
     // Control the paddle with keyboard input
     while ( start > 1 ) {   
@@ -625,6 +625,8 @@ void main()
             drawBackground(paddleX, 690);
             drawPaddle(paddleX, 700);
             direction = 0;
+            lifeUser = lifeUser - 1;
+            minusLife(lifeUser);
         }
 
 
