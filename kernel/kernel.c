@@ -627,6 +627,10 @@ void main()
             direction = 0;
             lifeUser = lifeUser - 1;
             minusLife(lifeUser);
+
+            if (lifeUser == 0) {
+                break;
+            }
         }
 
 
@@ -664,4 +668,9 @@ void main()
         
 
     } // while loop start >  1
+
+    drawBackground(0, 0);
+    unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_colon};
+    drawStrScaledDown(400, 300, gameover, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+    freeMemory(gameover);
 }
