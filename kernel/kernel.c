@@ -550,33 +550,33 @@ void main()
                     continue;
                 }
             }
-            // else if (direction == 8)
-            // {
-            //     ballX++;
-            //     ballY = ballY - 2;
-            //     if (ballX == 955 || ballY == 0)
-            //     {
-            //         continue;
-            //     }
-            // }
-            // else if (direction == 9)
-            // {
-            //     ballX += 2;
-            //     ballY--;
-            //     if (ballX == 955 || ballY == 0)
-            //     {
-            //         continue;
-            //     }
-            // }
-            // else if (direction == 10)
-            // {
-            //     ballX -= 2;
-            //     ballY--;
-            //     if (ballX == 0 || ballY == 0)
-            //     {
-            //         continue;
-            //     }
-            // }
+            else if (direction == 8)
+            {
+                ballX++;
+                ballY = ballY - 2;
+                if (ballX == 955 || ballY == 0)
+                {
+                    continue;
+                }
+            }
+            else if (direction == 9)
+            {
+                ballX += 2;
+                ballY--;
+                if (ballX == 955 || ballY == 0)
+                {
+                    continue;
+                }
+            }
+            else if (direction == 10)
+            {
+                ballX -= 2;
+                ballY--;
+                if (ballX == 0 || ballY == 0)
+                {
+                    continue;
+                }
+            }
             /*the ball fly directly upward as begining of the game, or after returned when players faild to catch
             the ball with the paddle.*/
             else
