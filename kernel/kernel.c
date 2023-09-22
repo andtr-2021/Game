@@ -109,10 +109,16 @@ void addScore(int score) {
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     } else if (score = 10) {
+        uart_puts("it is 10");
         unsigned long *score[2] = {epd_bitmap_num1, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
-    } else if (score == 11) {
+    }
+}
+
+void addScore2(int score) {
+    
+    if (score == 11) {
         unsigned long *score[2] = {epd_bitmap_num1, epd_bitmap_num1};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);  
@@ -150,6 +156,98 @@ void addScore(int score) {
         freeMemory(score);  
     } else if (score = 20) {
         unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num0};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);  
+    }
+}
+
+void addScore3(int score) {
+
+    // make from 21 to 30
+    if (score == 21) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num1};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);  
+    } else if (score == 22) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num2};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);  
+    } else if (score == 23) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num3};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 24) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num4};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 25) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num5};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 26) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num6};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 27) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num7};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 28) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num8};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 29) {
+        unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num9};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score = 30) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num0};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+
+}
+
+void addScore4(int score) {
+    // make from 31 to 40
+    if (score == 31) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num1};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 32) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num2};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 33) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num3};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);  
+    } else if (score == 34) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num4};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);  
+    } else if (score == 35) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num5};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 36) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num6};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 37) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num7};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);  
+    } else if (score == 38) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num8};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);  
+    } else if (score == 39) {
+        unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num9};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score = 40) {
+        unsigned long *score[2] = {epd_bitmap_num4, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);  
     }
@@ -494,19 +592,26 @@ void main()
             // Get direction from function detectCollision if the ball hit tiles.
             int checkCollideTile = 0;
 
-            printf("checkCollideTile: %d\n", checkCollideTile);
+       
 
             direction = detectCollision(ballX, ballY, direction, tiles, &checkCollideTile);
 
-            printf("checkCollideTile: %d\n", checkCollideTile);
-
-            printf("score: %d\n", scoreUser);
+        
 
             if (checkCollideTile == 1)
             {
                 scoreUser = scoreUser + 1;
                 printf("score: %d\n", scoreUser);
-                addScore(scoreUser);
+
+                if (scoreUser <= 10) {
+                    addScore(scoreUser);
+                } else if (scoreUser > 10 && scoreUser <= 20) {
+                    addScore2(scoreUser);
+                } else if (scoreUser > 20 && scoreUser <= 30) {
+                    addScore3(scoreUser);
+                } else if (scoreUser > 30 && scoreUser <= 40) {
+                    addScore4(scoreUser);
+                }
                 
             }
             // uart_puts(direction);
@@ -555,8 +660,6 @@ void main()
             }
         }
         
-        // addScore(scoreUser);
-        // minusLife(lifeUser);
 
     } // while loop start >  1
 }
