@@ -6,6 +6,7 @@
 #include "mbox.h"
 #include "font.h"
 #include "colors.h"
+#include "printf.h"
 
 // Logic of strcmp from https://www.techiedelight.com/implement-strcmp-function-c/
 bool my_strcmp(const char *str1, const char *str2)
@@ -197,10 +198,6 @@ void main()
     int count = 0;
     // start is the flag to check if the game is started.
     int start = 1;
-    // score is the score of the player.
-    int scoreUser = 0;
-    // life is the life of the player.
-    int lifeUser = 0;
     // leftbrickX is the x coordinate of the left brick.
     struct Sprite leftbrick;
     struct Sprite rightbrick;
@@ -307,18 +304,18 @@ void main()
             }
         }
 
-        // // score : 00
-        // unsigned long *score[9] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
-        // drawStrScaledDown(0, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        // score : 00
+        unsigned long *score[9] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
+        drawStrScaledDown(0, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
 
-        // freeMemory(score);
+        freeMemory(score);
     
 
-        // // life : 3
-        // unsigned long *life[8] = {epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num3};
-        // drawStrScaledDown(850, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        // life : 3
+        unsigned long *life[8] = {epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num3};
+        drawStrScaledDown(850, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
 
-        // freeMemory(life);
+        freeMemory(life);
 
     
 
@@ -326,6 +323,12 @@ void main()
         start = start + 1; 
 
     }
+
+
+    // score is the score of the player.
+    int scoreUser = 0;
+    // life is the life of the player.
+    int lifeUser = 0;
 
     // Control the paddle with keyboard input
     while ( start > 1 ) {   
@@ -489,7 +492,23 @@ void main()
 
             // direction = tiles->direction;
             // Get direction from function detectCollision if the ball hit tiles.
-            direction = detectCollision(ballX, ballY, direction, tiles);
+            int checkCollideTile = 0;
+
+            printf("checkCollideTile: %d\n", checkCollideTile);
+
+            direction = detectCollision(ballX, ballY, direction, tiles, &checkCollideTile);
+
+            printf("checkCollideTile: %d\n", checkCollideTile);
+
+            printf("score: %d\n", scoreUser);
+
+            if (checkCollideTile == 1)
+            {
+                scoreUser = scoreUser + 1;
+                printf("score: %d\n", scoreUser);
+                addScore(scoreUser);
+                
+            }
             // uart_puts(direction);
             // Slow down the running speed of the program to allow hummand can see the ball.
              wait_msec(3000);

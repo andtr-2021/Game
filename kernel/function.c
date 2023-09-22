@@ -10,6 +10,7 @@
 #include "../gcclib/stdbool.h"
 #include "mbox.h"
 
+
 struct Sprite
 {
     int x;
@@ -159,12 +160,14 @@ void draw_ball(int x, int y) {
 }
 
 
-int detectCollision(int x, int y, int direction,struct Sprite* tiles)
+int detectCollision(int x, int y, int direction,struct Sprite* tiles, int *checkCollideTile)
 {
     // Declare variables: count, dir, pre_dir.
     int count = 0;
     int dir = 0;
     int pre_dir = 0;
+
+   
     /*Set dir to be equal with direction, so that if the function dectect no collision between the ball and the tiles
     it will maintance current direction of the ball.*/
     dir = direction;
@@ -174,12 +177,14 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
         // Collision on the top and bottom of the tiles
         if (((x > tiles[i].x) && (x < (tiles[i].x + 150))) || (((x + 50) > tiles[i].x) && ((x + 50) < (tiles[i].x + 150))))
         {
+           
             /*Check if the ball hits a tile from bottom up.*/
             if (y == (tiles[i].y + 30))
             {
                 // Call function delete tile for visually and in the tiles array.
                 deleteTile_Visual(tiles[i].x, tiles[i].y);
                 deleteTile_Array(i, tiles);
+                *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
                 if (pre_dir == 9)
                     dir = 5;
                 else if (pre_dir == 3)
@@ -198,6 +203,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
                 // Call function delete tile for visually and in the tiles array.
                 deleteTile_Visual(tiles[i].x, tiles[i].y);
                 deleteTile_Array(i, tiles);
+                *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
                 if (pre_dir == 1)
                     dir = 3;
                 else if (pre_dir == 5)
@@ -216,6 +222,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
             // Call function delete tile for visually and in the tiles array.
             deleteTile_Visual(tiles[i].x, tiles[i].y);
             deleteTile_Array(i, tiles);
+             *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
             if (pre_dir == 1)
                 dir = 3;
             else if (pre_dir == 5)
@@ -233,6 +240,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
             // Call function delete tile for visually and in the tiles array.
             deleteTile_Visual(tiles[i].x, tiles[i].y);
             deleteTile_Array(i, tiles);
+             *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
             if (pre_dir == 9)
                 dir = 5;
             else if (pre_dir == 3)
@@ -250,6 +258,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
             // Call function delete tile for visually and in the tiles array.
             deleteTile_Visual(tiles[i].x, tiles[i].y);
             deleteTile_Array(i, tiles);
+             *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
             if (pre_dir == 1)
                 dir = 3;
             else if (pre_dir == 5)
@@ -267,6 +276,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
             // Call function delete tile for visually and in the tiles array.
             deleteTile_Visual(tiles[i].x, tiles[i].y);
             deleteTile_Array(i, tiles);
+             *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
             if (pre_dir == 9)
                 dir = 5;
             else if (pre_dir == 3)
@@ -287,6 +297,8 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
                 // Call function delete tile for visually and in the tiles array.
                 deleteTile_Visual(tiles[i].x, tiles[i].y);
                 deleteTile_Array(i, tiles);
+                *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
+
                 if (pre_dir == 9)
                     dir = 10;
                 else if (pre_dir == 1)
@@ -305,6 +317,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
                 // Call function delete tile for visually and in the tiles array.
                 deleteTile_Visual(tiles[i].x, tiles[i].y);
                 deleteTile_Array(i, tiles);
+                 *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
                 if (pre_dir == 2)
                     dir = 3;
                 else if (pre_dir == 10)
@@ -325,6 +338,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
                 // Call function delete tile for visually and in the tiles array.
                 deleteTile_Visual(tiles[i].x, tiles[i].y);
                 deleteTile_Array(i, tiles);
+                 *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
                 if (pre_dir == 9)
                     dir = 10;
                 else if (pre_dir == 1)
@@ -342,6 +356,7 @@ int detectCollision(int x, int y, int direction,struct Sprite* tiles)
                 // Call function delete tile for visually and in the tiles array.
                 deleteTile_Visual(tiles[i].x, tiles[i].y);
                 deleteTile_Array(i, tiles);
+                 *checkCollideTile = 1; // Set checkCollideTile to 1 to indicate that the ball has collided with a tile
 
                 if (pre_dir == 2)
                     dir = 3;
