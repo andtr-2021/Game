@@ -734,12 +734,11 @@ void gameStage2(int start, int life) {
                 }
             }
 
-            if (scoreUser > 2)
+            if (scoreUser > 3)
             {
                 start = start + 1;
             }
 
-            // uart_puts(direction);
             // Slow down the running speed of the program to allow hummand can see the ball.
             wait_msec(3000);
         }
@@ -753,7 +752,7 @@ void gameStage2(int start, int life) {
             drawPaddle(paddleX, 700);
             direction = 0;
             lifeUser = lifeUser - 1;
-            // minusLife(lifeUser);
+            drawLifeForStage2(lifeUser);
 
             if (lifeUser == 0)
             {
@@ -795,8 +794,13 @@ void gameStage2(int start, int life) {
 
     }
 
+    drawBackground(0, 0);
+    unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_colon};
+    drawStrScaledDown(400, 300, gameover, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+    freeMemory(gameover);
+
     
-    
+     
 }
 
 
@@ -1227,7 +1231,4 @@ void main()
         uart_puts("Enter stage 2");
         gameStage2(start, lifeUser);
     }
-
-    return; 
-    
 }
