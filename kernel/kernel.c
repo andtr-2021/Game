@@ -477,11 +477,38 @@ void gameStage2(int start, int life) {
 
     drawBackground(0, 0);
     // draw welcome to stage 2 
-    unsigned long *welcomeToStage2[20] = {epd_bitmap_w, epd_bitmap_e, epd_bitmap_l, epd_bitmap_c, epd_bitmap_o, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_t, epd_bitmap_o, epd_bitmap_space, epd_bitmap_s, epd_bitmap_t, epd_bitmap_a,epd_bitmap_g, epd_bitmap_e, epd_bitmap_space, epd_bitmap_num2}; 
-    drawStrScaledDown(300, 0, welcomeToStage2, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+    unsigned long *welcomeToStage2[20] = {epd_bitmap_w, epd_bitmap_e, epd_bitmap_l, epd_bitmap_c, epd_bitmap_o, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_t, epd_bitmap_o}; 
+    drawStrScaledDown(325, 100, welcomeToStage2, 100, 100, COLOR_BLACK, COLOR_BLUE, 4);
     freeMemory(welcomeToStage2);
 
-    wait_msec(5000000);
+    unsigned long *stage2[15] = { epd_bitmap_s, epd_bitmap_t, epd_bitmap_a, epd_bitmap_g, epd_bitmap_e, epd_bitmap_num2};
+    drawStrScaledDown(325, 150, stage2, 100, 100, COLOR_BLUE, COLOR_BLACK, 2);
+    freeMemory(stage2);
+    
+    // you are good!
+    unsigned long *youAreGood[20] = {epd_bitmap_y, epd_bitmap_o, epd_bitmap_u, epd_bitmap_space, epd_bitmap_a, epd_bitmap_r, epd_bitmap_e, epd_bitmap_space, epd_bitmap_g, epd_bitmap_o, epd_bitmap_o, epd_bitmap_d, epd_bitmap_exclamation};
+    drawStrScaledDown(325, 225, youAreGood, 100, 100, COLOR_RED, COLOR_WHITE, 4);
+    freeMemory(youAreGood);
+
+    // to win this stage
+    unsigned long *toWinThisGame[20] = {epd_bitmap_t, epd_bitmap_o, epd_bitmap_space, epd_bitmap_w, epd_bitmap_i, epd_bitmap_n, epd_bitmap_space, epd_bitmap_t, epd_bitmap_h, epd_bitmap_i, epd_bitmap_s, epd_bitmap_space, epd_bitmap_s, epd_bitmap_t, epd_bitmap_a, epd_bitmap_g, epd_bitmap_e, epd_bitmap_colon};
+    drawStrScaledDown(325, 300, toWinThisGame, 100, 100, COLOR_GRAY, COLOR_WHITE, 4);
+    freeMemory(toWinThisGame);
+
+    // collect 35 pts
+    unsigned long *collect35Pts[20] = {epd_bitmap_c, epd_bitmap_o, epd_bitmap_l, epd_bitmap_l, epd_bitmap_e, epd_bitmap_c, epd_bitmap_t, epd_bitmap_space, epd_bitmap_num3, epd_bitmap_num5, epd_bitmap_space, epd_bitmap_p, epd_bitmap_t, epd_bitmap_s};
+    drawStrScaledDown(325, 375, collect35Pts, 100, 100, COLOR_GRAY, COLOR_WHITE, 4);
+    freeMemory(collect35Pts);
+    
+
+
+    // always be playing heart
+    unsigned long *alwaysBePlaying[20] = {epd_bitmap_a, epd_bitmap_l, epd_bitmap_w, epd_bitmap_a, epd_bitmap_y, epd_bitmap_s, epd_bitmap_space, epd_bitmap_b, epd_bitmap_e, epd_bitmap_space, epd_bitmap_p, epd_bitmap_l, epd_bitmap_a, epd_bitmap_y, epd_bitmap_i, epd_bitmap_n, epd_bitmap_g, epd_bitmap_space, epd_bitmap_heart};
+    drawStrScaledDown(325, 450, alwaysBePlaying, 100, 100, COLOR_RED, COLOR_BLACK, 4);
+    freeMemory(alwaysBePlaying);
+
+
+    wait_msec(6000000);
     
     uart_puts("Stage 2 initiate");
     struct Sprite obstacleLeft;
@@ -866,18 +893,29 @@ void gameStage2(int start, int life) {
 
     }
 
-    if (scoreUser >  35) {
+    if (scoreUser >  0) {
 
         drawBackground(0, 0);
+
+        // hearts icon
+        unsigned long *heartsUpper[8] = {epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart};
+        drawStrScaledDown(400, 225, heartsUpper, 100, 100, COLOR_RED, COLOR_TRANSPARENT, 4);
+        freeMemory(heartsUpper);
+
         // draw you win
-        unsigned long *youwin[8] = {epd_bitmap_y, epd_bitmap_o, epd_bitmap_u, epd_bitmap_space, epd_bitmap_w, epd_bitmap_i, epd_bitmap_n};
-        drawStrScaledDown(400, 300, youwin, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        unsigned long *youwin[8] = {epd_bitmap_y, epd_bitmap_o, epd_bitmap_u, epd_bitmap_space, epd_bitmap_w, epd_bitmap_i, epd_bitmap_n, epd_bitmap_exclamation};
+        drawStrScaledDown(400, 300, youwin, 100, 100, COLOR_RED, COLOR_BLACK, 2);
         freeMemory(youwin);
+
+        // heart incon
+        unsigned long *heartsLower[8] = {epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart, epd_bitmap_heart};
+        drawStrScaledDown(400, 375, heartsLower, 100, 100, COLOR_RED, COLOR_TRANSPARENT, 4);
+        freeMemory(heartsLower);
 
         return;
     } else if ( scoreUser < 35 && lifeUser == 0) {
         drawBackground(0, 0);
-        unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_colon};
+        unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_exclamation};
         drawStrScaledDown(400, 300, gameover, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(gameover);
     }    
