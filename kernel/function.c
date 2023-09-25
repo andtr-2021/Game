@@ -551,7 +551,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
     dir = direction;
     /*Condition to check if the bottom of the ball is on the same y axis with the top of the brick and stay within
     the length of the brick.*/
-    if (((ballX > obstacleX) && (ballX < obstacleX + 240)) || (((ballX + 50) > obstacleX) && (ballX + 50 < obstacleX + 240)))
+    if (((ballX > obstacleX) && (ballX < obstacleX + 150)) || (((ballX + 50) > obstacleX) && (ballX + 50 < obstacleX + 150)))
     {
         if (ballY + 50 == obstacleY)
         {
@@ -579,7 +579,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
                     dir = 3;
             }
             // If the ball hit the rightmost pixels of the brick.
-            else if (((ballX <= (obstacleX + 240)) && ((ballX + 50) >= (obstacleX + 160))))
+            else if (((ballX <= (obstacleX + 150)) && ((ballX + 50) >= (obstacleX + 160))))
             {
                 // Direction the ball will bounce back.
                 if (dir == 1)
@@ -594,7 +594,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
         the length of the brick.*/
         // uart_dec(dir);
 
-        if (ballY == (obstacleY + 20))
+        if (ballY == (obstacleY + 30))
         {
             // Condition to decide direction whether the ball collide with which part of the paddle will bounce back.
             // If the ball hit the first 100 pixels of the brick.
@@ -608,7 +608,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
                 else
                     dir = 7;
             }
-            // If the ball hit the middle part of the paddle (from pixle 100 - 200).
+            // If the ball hit the middle part of the paddle (from pixle 100 - 300).
             else if (((ballX < (obstacleX + 160)) && ((ballX + 50) > (obstacleX + 80))))
             {
                 // Direction the ball will bounce back.
@@ -620,7 +620,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
                     dir = 4;
             }
             // If the ball hit the rightmost pixels of the brick.
-            else if (((ballX <= (obstacleX + 240)) && ((ballX + 50) >= (obstacleX + 160))))
+            else if (((ballX <= (obstacleX + 150)) && ((ballX + 50) >= (obstacleX + 160))))
             {
                 // Direction the ball will bounce back.
                 if (dir == 9)
@@ -635,7 +635,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
         // pre_dir = dir;
     }
     // Checking if the ball hit tile/s with partial of the ball from side to side.
-    else if ((ballY <= (obstacleY + 20)) && (ballY >= obstacleY))
+    else if ((ballY <= (obstacleY + 30)) && (ballY >= obstacleY))
     {
         // Checking if partial of the ball hit brick from the left side of the tile.
         if ((ballX + 50) == obstacleX)
@@ -653,7 +653,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
         }
 
         // Checking if partial of the ball hit brick from the right side of the tile.
-        if (ballX == (obstacleX + 240))
+        if (ballX == (obstacleX + 150))
         {
             if (dir == 2)
                 dir = 3;
@@ -684,7 +684,7 @@ int collisionWithObstacle(int ballX, int ballY, int obstacleX, int obstacleY, in
                 dir = 2;
         }
 
-        if (ballX == (obstacleX + 240))
+        if (ballX == (obstacleX + 150))
         {
             if (dir == 2)
                 dir = 3;
@@ -710,30 +710,39 @@ void drawMovingObstacle(int *obstacleX, int *obstacleY, int direction)
     else{
         *obstacleX -= 1;
     }
-    
+    drawObstacle(*obstacleX,*obstacleY);
+    wait_msec(10);
 }
 void deleteObstacle(int obstacleX, int obstacleY, int direction)
 {
     if (direction == 1) {
-        for (int j = obstacleX; j < (obstacleY + 21); j++)            // Dimension of brick is 240x20
+        for (int j = obstacleX; j < (obstacleY + 21); j++)            // Dimension of brick is 240x30
         {
-            for (int i = obstacleX; i < obstacleX + 1; i++)           // Deleting part is 2x20
+            for (int i = obstacleX; i < obstacleX + 1; i++)           // Deleting part is 2x30
             {
                 //Draw background image on top of brick trace 
                 drawPixelARGB32(i, j, background[j * 1024 + i]);
                 wait_msec(10);
             }
         }        
+    }else{
+        for( int j = obstacleY; j < (obstacleY+21); j++){
+            for(int i = (obstacleX + 241); i > (obstacleX + 239); i--){
+                drawPixelARGB32(i,j,background[j * 1024 + i]);
+                wait_msec(10);
+            }
+        }
     }
 }
 void drawObstacle(int x, int y)
 {
-    for (int j = 0; j < 20; j++)
+    for (int j = 0; j < 30; j++)
     {
         y++;
-        for (int i = 0; i < 240; i++)
+        for (int i = 0; i < 150; i++)
         {
-            drawPixelARGB32(i + x, y, obstacle[j * 240 + i]);
+            if (obstacle[j * 150 + i] != 0x00)
+                drawPixelARGB32(i + x, y, obstacle[j * 150 + i]);
         }
     }
 }

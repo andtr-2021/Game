@@ -380,11 +380,14 @@ void gameStage2(int start, int life) {
     wait_msec(5000000);
     
     uart_puts("Stage 2 initiate");
-    struct Sprite obstacle;
-    obstacle.x = 35;
-    obstacle.y = 375;
-    obstacle.direction = 1;
-
+    struct Sprite obstacleLeft;
+    struct Sprite obstacleRight;
+    obstacleLeft.x = 175;
+    obstacleLeft.y = 375;
+    obstacleLeft.direction = 1;
+    obstacleRight.x = 675;
+    obstacleRight.y = 375;
+    obstacleRight.direction = 2;
     // Start with image at index 0
     int ballX = 550, ballY = 650;
     // direction is the direction of the ball, 0 is the ball fly directly upward.
@@ -396,8 +399,7 @@ void gameStage2(int start, int life) {
     // count is the counter for the inputBuffer.
     int count = 0;
     // start is the flag to check if the game is started.
-    // leftbrickX is the x coordinate of the left brick.
-
+       
     // inputBuffer is the buffer to store the input from the keyboard.
     char inputBuffer[60]; // A separate buffer for UART input
     // tiles is the array to store all the tiles in the game.
@@ -421,16 +423,14 @@ void gameStage2(int start, int life) {
     // Stage 3 : Drawing The Second Time 
     while (start > 2 && start < 4 )
     {
+        
+        drawObstacle(obstacleLeft.x, obstacleLeft.y , obstacleLeft.direction);
+        drawObstacle(obstacleRight.x, obstacleRight.y, obstacleRight.direction);
         // Draw all tiles in a column.
         for (int x = 90; x < 900; x += 170)
         {   
-            if(obstacle.x == 35){
-                obstacle.direction = 1;
-            }else if(obstacle.x == 499){
-                obstacle.direction = 0;
-            }
-            drawMovingObstacle(&obstacle.x, &obstacle.y, obstacle.direction);
-            // Draw all tiles in a row.
+            
+           // Draw all tiles in a row.
             for (int y = 50; y < 280; y += 32)
             {
                 // Draw blue tile at position any x, and y = 50.
@@ -688,7 +688,9 @@ void gameStage2(int start, int life) {
             // Get direction from function detectCollision if the ball hit tiles.
             int checkCollideTile = 0;
 
-            direction = collisionWithObstacle(ballX, ballY, obstacle.x, obstacle.y, direction);
+            direction = collisionWithObstacle(ballX, ballY, obstacleRight.x, obstacleRight.y, direction);
+            direction = collisionWithObstacle(ballX, ballY, obstacleLeft.x, obstacleLeft.y, direction);
+            // direction = collisionWithObstacle(ballX, ballY, obstacleRight.x, obstacleRight.y, obstacleRight.direction);
 
             direction = detectCollision(ballX, ballY, direction, tiles, &checkCollideTile);
 
@@ -715,10 +717,10 @@ void gameStage2(int start, int life) {
                 }
             }
 
-            if (scoreUser > 2)
-            {
-                start = start + 1;
-            }
+            // if (scoreUser > 2)
+            // {
+            //     start = start + 1;
+            // }
 
             // uart_puts(direction);
             // Slow down the running speed of the program to allow hummand can see the ball.
@@ -736,11 +738,11 @@ void gameStage2(int start, int life) {
             lifeUser = lifeUser - 1;
             minusLife(lifeUser);
 
-            if (lifeUser == 0)
-            {
-                start += 1;
-                break;
-            }
+            // if (lifeUser == 0)
+            // {
+            //     start += 1;
+            //     break;
+            // }
         }
 
         char c = getUart();
@@ -787,10 +789,10 @@ void main()
     // Initialize frame buffer
     framebf_init();
     // Initialize struct obstacle
-    struct Sprite obstacle;
-    obstacle.x = 35;
-    obstacle.y = 375;
-    obstacle.direction = 1;
+    // struct Sprite obstacle;
+    // obstacle.x = 35;
+    // obstacle.y = 375;
+    // obstacle.direction = 1;
 
     drawBackground(0, 0);
     // draw welcome to the game
@@ -1103,7 +1105,7 @@ void main()
             // Get direction from function detectCollision if the ball hit tiles.
             int checkCollideTile = 0;
 
-            direction = collisionWithObstacle(ballX, ballY, obstacle.x, obstacle.y, direction);
+            // direction = collisionWithObstacle(ballX, ballY, obstacle.x, obstacle.y, direction);
 
             direction = detectCollision(ballX, ballY, direction, tiles, &checkCollideTile);
 
@@ -1130,7 +1132,7 @@ void main()
                 }
             }
 
-            if (scoreUser > 2)
+            if (scoreUser > 0)
             {
                 start = start + 1;
             }
