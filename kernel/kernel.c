@@ -825,7 +825,6 @@ void gameStage2(int start, int life) {
             if (checkCollideTile == 1)
             {
                 scoreUser = scoreUser + 1;
-                printf("score: %d\n", scoreUser);
 
                 if (scoreUser <= 10)
                 {
@@ -833,7 +832,7 @@ void gameStage2(int start, int life) {
                 }
             }
 
-            if (scoreUser > 35)
+            if (scoreUser > 10)
             {
                 start = start + 1; // win the game
             }
@@ -893,7 +892,7 @@ void gameStage2(int start, int life) {
 
     }
 
-    if (scoreUser >  0) {
+    if (scoreUser >  10 && lifeUser > 0) {
 
         drawBackground(0, 0);
 
@@ -913,7 +912,7 @@ void gameStage2(int start, int life) {
         freeMemory(heartsLower);
 
         return;
-    } else if ( scoreUser < 35 && lifeUser == 0) {
+    } else if (lifeUser == 0) {
         drawBackground(0, 0);
         unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_exclamation};
         drawStrScaledDown(400, 300, gameover, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
