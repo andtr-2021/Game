@@ -979,9 +979,14 @@ void main()
 
     freeMemory(studentFourName);
 
+    // to win: collect 35 pts
+    unsigned long *toWin[28] = {epd_bitmap_t, epd_bitmap_o, epd_bitmap_space, epd_bitmap_w, epd_bitmap_i, epd_bitmap_n, epd_bitmap_colon, epd_bitmap_c, epd_bitmap_o, epd_bitmap_l, epd_bitmap_l, epd_bitmap_e, epd_bitmap_c, epd_bitmap_t, epd_bitmap_space, epd_bitmap_num3, epd_bitmap_num5, epd_bitmap_space, epd_bitmap_p, epd_bitmap_t, epd_bitmap_s};
+    drawStrScaledDown(100, 625, toWin, 100, 100, COLOR_BLACK, COLOR_YELLOW, 4);
+    freeMemory(toWin);
+
     // enjoy the game!
     unsigned long *enjoy[20] = {epd_bitmap_e, epd_bitmap_n, epd_bitmap_j, epd_bitmap_o, epd_bitmap_y, epd_bitmap_space, epd_bitmap_t, epd_bitmap_h, epd_bitmap_e, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_exclamation};
-    drawStrScaledDown(350, 625, enjoy, 100, 100, COLOR_ORANGE , COLOR_BLACK, 4);
+    drawStrScaledDown(350, 700, enjoy, 100, 100, COLOR_ORANGE , COLOR_BLACK, 4);
     freeMemory(enjoy);
 
     wait_msec(5000000);
@@ -1101,8 +1106,8 @@ void main()
             }
         }
 
-        // score : 00
-        unsigned long *score[9] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
+        // score : 00 stage 01 
+        unsigned long *score[20] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0, epd_bitmap_space, epd_bitmap_s, epd_bitmap_t, epd_bitmap_a, epd_bitmap_g, epd_bitmap_e, epd_bitmap_num1};
         drawStrScaledDown(0, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
 
         freeMemory(score);
@@ -1315,7 +1320,7 @@ void main()
                 }
             }
 
-            if (scoreUser == 0)
+            if (scoreUser > 10)
             {
                 start = start + 1; // move to the next stage 2 
             }
