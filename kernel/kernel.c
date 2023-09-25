@@ -475,10 +475,10 @@ void gameStage2(int start, int life) {
     framebf_init();
     // Initialize struct obstacle
 
-      drawBackground(0, 0);
+    drawBackground(0, 0);
     // draw welcome to stage 2 
     unsigned long *welcomeToStage2[20] = {epd_bitmap_w, epd_bitmap_e, epd_bitmap_l, epd_bitmap_c, epd_bitmap_o, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_t, epd_bitmap_o, epd_bitmap_space, epd_bitmap_s, epd_bitmap_t, epd_bitmap_a,epd_bitmap_g, epd_bitmap_e, epd_bitmap_space, epd_bitmap_num2}; 
-    drawStrScaledDown(300, 300, welcomeToStage2, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+    drawStrScaledDown(300, 0, welcomeToStage2, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
     freeMemory(welcomeToStage2);
 
     wait_msec(5000000);
@@ -898,12 +898,60 @@ void main()
     // obstacle.direction = 1;
 
     drawBackground(0, 0);
-    // draw welcome to the game
-    unsigned long *welcome[20] = {epd_bitmap_w, epd_bitmap_e, epd_bitmap_l, epd_bitmap_c, epd_bitmap_o, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_t, epd_bitmap_o, epd_bitmap_space, epd_bitmap_t, epd_bitmap_h, epd_bitmap_e, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e};
-    drawStrScaledDown(300, 300, welcome, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+    // draw welcome to group 18
+    unsigned long *welcome[25] = {epd_bitmap_w, epd_bitmap_e, epd_bitmap_l, epd_bitmap_c, epd_bitmap_o, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_t, epd_bitmap_o, epd_bitmap_space, epd_bitmap_g, epd_bitmap_r, epd_bitmap_o, epd_bitmap_u, epd_bitmap_p, epd_bitmap_num1, epd_bitmap_num8, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_exclamation};
+    drawStrScaledDown(100, 50, welcome, 100, 100,COLOR_BLACK, COLOR_PINK, 4);
     freeMemory(welcome);
 
-    wait_msec(5000000);
+    // Brick Breaker
+    unsigned long *brick[15] = {epd_bitmap_b, epd_bitmap_r, epd_bitmap_i, epd_bitmap_c, epd_bitmap_k, epd_bitmap_space, epd_bitmap_b, epd_bitmap_r, epd_bitmap_e, epd_bitmap_a, epd_bitmap_k, epd_bitmap_e, epd_bitmap_r, epd_bitmap_exclamation};
+    drawStrScaledDown(200, 150, brick, 100, 100, COLOR_YELLOW, COLOR_BLACK, 2);
+
+    unsigned long *heart[20] = {epd_bitmap_a, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_m, epd_bitmap_a, epd_bitmap_d, epd_bitmap_e, epd_bitmap_space, epd_bitmap_w, epd_bitmap_i, epd_bitmap_t, epd_bitmap_h, epd_bitmap_space, epd_bitmap_heart};
+    drawStrScaledDown(300, 225, heart, 100, 100, COLOR_RED, COLOR_TRANSPARENT, 4);
+
+    // makers:
+    unsigned long *makers[10] = {epd_bitmap_m, epd_bitmap_a, epd_bitmap_k, epd_bitmap_e, epd_bitmap_r, epd_bitmap_s, epd_bitmap_colon};
+    drawStrScaledDown(100, 325, makers, 100, 100, COLOR_BLUE, COLOR_WHITE, 4);
+
+
+    // Le Pham Ngoc Hieu : S3877375
+    unsigned long *studentOneName[30]  = {epd_bitmap_l, epd_bitmap_e, epd_bitmap_space , epd_bitmap_p, epd_bitmap_h, epd_bitmap_a, epd_bitmap_m, epd_bitmap_space , epd_bitmap_n, epd_bitmap_g, epd_bitmap_o, epd_bitmap_c, epd_bitmap_space , epd_bitmap_h, epd_bitmap_i, epd_bitmap_e, epd_bitmap_u, epd_bitmap_colon, epd_bitmap_s, epd_bitmap_num3, epd_bitmap_num8, epd_bitmap_num7, epd_bitmap_num7, epd_bitmap_num3, epd_bitmap_num7, epd_bitmap_num5};
+    drawStrScaledDown(150, 375, studentOneName, 100, 100, COLOR_WHITE, COLOR_BLUE, 4);
+
+    freeMemory(studentOneName);
+
+    // Mai Chieu Thuy : s3877746
+    unsigned long *studentTwoName[30]  = {epd_bitmap_m, epd_bitmap_a, epd_bitmap_i, epd_bitmap_space , epd_bitmap_c, epd_bitmap_h, epd_bitmap_i, epd_bitmap_e, epd_bitmap_u, epd_bitmap_space , epd_bitmap_t, epd_bitmap_h, epd_bitmap_u, epd_bitmap_y, epd_bitmap_colon, epd_bitmap_s, epd_bitmap_num3, epd_bitmap_num8, epd_bitmap_num7, epd_bitmap_num7, epd_bitmap_num4, epd_bitmap_num6};
+    drawStrScaledDown(150, 425, studentTwoName, 100, 100, COLOR_WHITE, COLOR_BLUE, 4);
+    
+    freeMemory(studentTwoName);
+
+    // Park Anh Kiet : s3681475
+    unsigned long *studentThreeName[25]  = {epd_bitmap_p, epd_bitmap_a, epd_bitmap_r, epd_bitmap_k, epd_bitmap_space , epd_bitmap_a, epd_bitmap_n, epd_bitmap_h, epd_bitmap_space , epd_bitmap_k, epd_bitmap_i, epd_bitmap_e, epd_bitmap_t, epd_bitmap_colon, epd_bitmap_s, epd_bitmap_num3, epd_bitmap_num6, epd_bitmap_num8, epd_bitmap_num1, epd_bitmap_num4, epd_bitmap_num7, epd_bitmap_num5};
+    drawStrScaledDown(150, 475, studentThreeName, 100, 100, COLOR_WHITE, COLOR_BLUE, 4);
+
+    freeMemory(studentThreeName);
+
+    // DO TRUONG AN : s3878698
+    unsigned long *studentFourName[25]  = {epd_bitmap_d, epd_bitmap_o, epd_bitmap_space , epd_bitmap_t, epd_bitmap_r, epd_bitmap_u, epd_bitmap_o, epd_bitmap_n, epd_bitmap_g, epd_bitmap_space ,epd_bitmap_a, epd_bitmap_n, epd_bitmap_colon, epd_bitmap_s, epd_bitmap_num3, epd_bitmap_num8, epd_bitmap_num7, epd_bitmap_num8, epd_bitmap_num6, epd_bitmap_num9, epd_bitmap_num8};
+    drawStrScaledDown(150, 525, studentFourName, 100, 100, COLOR_WHITE, COLOR_BLUE, 4);
+
+    freeMemory(studentFourName);
+
+    // enjoy the game!
+    unsigned long *enjoy[20] = {epd_bitmap_e, epd_bitmap_n, epd_bitmap_j, epd_bitmap_o, epd_bitmap_y, epd_bitmap_space, epd_bitmap_t, epd_bitmap_h, epd_bitmap_e, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_exclamation};
+    drawStrScaledDown(350, 625, enjoy, 100, 100, COLOR_ORANGE , COLOR_BLACK, 4);
+
+
+
+    
+
+    wait_msec(9000000);
+
+    wait_msec(9000000);
+
+    wait_msec(9000000);
 
     // Start with image at index 0
     int ballX = 550, ballY = 650;
