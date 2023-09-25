@@ -437,8 +437,13 @@ void minusLife(int life)
 
 void drawLifeForStage2(int life)
 {
-
-    if (life == 2)
+    if (life == 3)
+    {
+        unsigned long *life[10] = { epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num3};
+        drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(life);
+    }
+    else if (life == 2)
     {
         unsigned long *life[10] = { epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num2};
         drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
@@ -604,11 +609,11 @@ void gameStage2(int start, int life) {
         // score : 00
         int score = 0; 
         addScoreForStage2(score);
-
+        drawLifeForStage2(life);
+        
         freeMemory(score);
 
         // life : 3
-        drawLifeForStage2(life);
 
         // move to the next stage
         start = start + 1;
@@ -623,7 +628,7 @@ void gameStage2(int start, int life) {
     // Control the paddle with keyboard input
     while (start > 3 && start < 5)
     {
-
+            
         // Check if the ball is in the screen frame.
         if ((ballX <= 955 && ballX >= -127) && (ballY <= 786 && ballY >= 0))
         {
