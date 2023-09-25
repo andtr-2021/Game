@@ -806,7 +806,7 @@ void gameStage2(int start, int life) {
                 }
             }
 
-            if (scoreUser > 0)
+            if (scoreUser > 35)
             {
                 start = start + 1; // win the game
             }
@@ -866,7 +866,7 @@ void gameStage2(int start, int life) {
 
     }
 
-    if (scoreUser >  0) {
+    if (scoreUser >  35) {
 
         drawBackground(0, 0);
         // draw you win
@@ -1234,7 +1234,7 @@ void main()
                 }
             }
 
-            if (scoreUser > 0)
+            if (scoreUser > 35)
             {
                 start = start + 1; // move to the next stage 2 
             }
