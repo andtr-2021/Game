@@ -699,19 +699,19 @@ void gameStage2(int start, int life) {
 
                 if (scoreUser <= 10)
                 {
-                    addScore(scoreUser);
+                    // addScore(scoreUser);
                 }
                 else if (scoreUser > 10 && scoreUser <= 20)
                 {
-                    addScore2(scoreUser);
+                    // addScore2(scoreUser);
                 }
                 else if (scoreUser > 20 && scoreUser <= 30)
                 {
-                    addScore3(scoreUser);
+                    // addScore3(scoreUser);
                 }
                 else if (scoreUser > 30 && scoreUser <= 40)
                 {
-                    addScore4(scoreUser);
+                    // addScore4(scoreUser);
                 }
             }
 
@@ -734,12 +734,11 @@ void gameStage2(int start, int life) {
             drawPaddle(paddleX, 700);
             direction = 0;
             lifeUser = lifeUser - 1;
-            minusLife(lifeUser);
+            // minusLife(lifeUser);
 
             if (lifeUser == 0)
             {
-                start += 1;
-                break;
+                return; 
             }
         }
 
@@ -1208,6 +1207,6 @@ void main()
         gameStage2(start, lifeUser);
     }
 
-    
+    return; 
     
 }
