@@ -128,7 +128,7 @@ void addScore(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 10)
+    else if (score == 10)
     {
         uart_puts("it is 10");
         unsigned long *score[2] = {epd_bitmap_num1, epd_bitmap_num0};
@@ -194,7 +194,7 @@ void addScore2(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 20)
+    else if (score == 20)
     {
         unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
@@ -260,7 +260,7 @@ void addScore3(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 30)
+    else if (score == 30)
     {
         unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
@@ -325,12 +325,91 @@ void addScore4(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 40)
+    else if (score == 40)
     {
         unsigned long *score[2] = {epd_bitmap_num4, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
+}
+
+void addScoreForStage2(int score)
+{
+    // draw the score 
+    unsigned long *scoreWord[10] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon};
+    drawStrScaledDown(0, 0, scoreWord, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+
+    unsigned long *stage2[8] = {epd_bitmap_space, epd_bitmap_s, epd_bitmap_t, epd_bitmap_a, epd_bitmap_g, epd_bitmap_e, epd_bitmap_num2};
+    drawStrScaledDown(200, 0, stage2, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+
+    
+    if (score == 0) {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num0};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 1)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num1};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 2)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num2};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 3)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num3};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 4)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num4};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 5)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num5};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 6)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num6};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 7)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num7};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 8)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num8};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 9)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num9};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 10)
+    {
+        uart_puts("it is 10");
+        unsigned long *score[2] = {epd_bitmap_num1, epd_bitmap_num0};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+
+    
 }
 
 void minusLife(int life)
@@ -523,8 +602,8 @@ void gameStage2(int start, int life) {
         }
 
         // score : 00
-        unsigned long *score[9] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
-        drawStrScaledDown(0, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        int score = 0; 
+        addScoreForStage2(score);
 
         freeMemory(score);
 
@@ -718,19 +797,7 @@ void gameStage2(int start, int life) {
 
                 if (scoreUser <= 10)
                 {
-                    addScore(scoreUser);
-                }
-                else if (scoreUser > 10 && scoreUser <= 20)
-                {
-                    addScore2(scoreUser);
-                }
-                else if (scoreUser > 20 && scoreUser <= 30)
-                {
-                    addScore3(scoreUser);
-                }
-                else if (scoreUser > 30 && scoreUser <= 40)
-                {
-                    addScore4(scoreUser);
+                    addScoreForStage2(scoreUser);
                 }
             }
 
