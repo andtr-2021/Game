@@ -906,9 +906,11 @@ void main()
     // Brick Breaker
     unsigned long *brick[15] = {epd_bitmap_b, epd_bitmap_r, epd_bitmap_i, epd_bitmap_c, epd_bitmap_k, epd_bitmap_space, epd_bitmap_b, epd_bitmap_r, epd_bitmap_e, epd_bitmap_a, epd_bitmap_k, epd_bitmap_e, epd_bitmap_r, epd_bitmap_exclamation};
     drawStrScaledDown(200, 150, brick, 100, 100, COLOR_YELLOW, COLOR_BLACK, 2);
+    freeMemory(brick);
 
     unsigned long *heart[20] = {epd_bitmap_a, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_m, epd_bitmap_a, epd_bitmap_d, epd_bitmap_e, epd_bitmap_space, epd_bitmap_w, epd_bitmap_i, epd_bitmap_t, epd_bitmap_h, epd_bitmap_space, epd_bitmap_heart};
     drawStrScaledDown(300, 225, heart, 100, 100, COLOR_RED, COLOR_TRANSPARENT, 4);
+    freeMemory(heart);
 
     // makers:
     unsigned long *makers[10] = {epd_bitmap_m, epd_bitmap_a, epd_bitmap_k, epd_bitmap_e, epd_bitmap_r, epd_bitmap_s, epd_bitmap_colon};
@@ -942,16 +944,9 @@ void main()
     // enjoy the game!
     unsigned long *enjoy[20] = {epd_bitmap_e, epd_bitmap_n, epd_bitmap_j, epd_bitmap_o, epd_bitmap_y, epd_bitmap_space, epd_bitmap_t, epd_bitmap_h, epd_bitmap_e, epd_bitmap_space, epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_exclamation};
     drawStrScaledDown(350, 625, enjoy, 100, 100, COLOR_ORANGE , COLOR_BLACK, 4);
+    freeMemory(enjoy);
 
-
-
-    
-
-    wait_msec(9000000);
-
-    wait_msec(9000000);
-
-    wait_msec(9000000);
+    wait_msec(5000000);
 
     // Start with image at index 0
     int ballX = 550, ballY = 650;
@@ -1282,7 +1277,7 @@ void main()
                 }
             }
 
-            if (scoreUser > 35)
+            if (scoreUser == 0)
             {
                 start = start + 1; // move to the next stage 2 
             }
@@ -1305,8 +1300,9 @@ void main()
 
             if (lifeUser == 0)
             {
+                uart_puts("Game Over\n");
                 start += 1;
-                break;
+                uart_puts("Game Over ehadfas\n");
             }
         }
 
@@ -1346,15 +1342,16 @@ void main()
 
     if (lifeUser == 0)
     {
+        uart_puts("Game Over\n");
         drawBackground(0, 0);
-        unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_colon};
+        unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_exclamation};
         drawStrScaledDown(400, 300, gameover, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(gameover);
 
-        return;
+        return; 
     }
 
-    if (start >  2 && start << 3) {
+    if (start >  2 && start < 4) {
         gameStage2(start, lifeUser);
     }
 }
