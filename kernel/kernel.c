@@ -440,18 +440,18 @@ void drawLifeForStage2(int life)
 
     if (life == 2)
     {
-        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num2};
+        unsigned long *life[10] = { epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num2};
         drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(life);
     }
     else if (life == 1)
     {
-        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num1};
+        unsigned long *life[10] = { epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num1};
         drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(life);
     } else if (life == 0)
     {
-        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
+        unsigned long *life[10] = {  epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
         drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(life);
     }
