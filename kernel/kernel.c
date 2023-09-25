@@ -128,7 +128,7 @@ void addScore(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 10)
+    else if (score == 10)
     {
         uart_puts("it is 10");
         unsigned long *score[2] = {epd_bitmap_num1, epd_bitmap_num0};
@@ -194,7 +194,7 @@ void addScore2(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 20)
+    else if (score == 20)
     {
         unsigned long *score[2] = {epd_bitmap_num2, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
@@ -260,7 +260,7 @@ void addScore3(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 30)
+    else if (score == 30)
     {
         unsigned long *score[2] = {epd_bitmap_num3, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
@@ -325,12 +325,91 @@ void addScore4(int score)
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
-    else if (score = 40)
+    else if (score == 40)
     {
         unsigned long *score[2] = {epd_bitmap_num4, epd_bitmap_num0};
         drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(score);
     }
+}
+
+void addScoreForStage2(int score)
+{
+    // draw the score 
+    unsigned long *scoreWord[10] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon};
+    drawStrScaledDown(0, 0, scoreWord, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+
+    unsigned long *stage2[8] = {epd_bitmap_space, epd_bitmap_s, epd_bitmap_t, epd_bitmap_a, epd_bitmap_g, epd_bitmap_e, epd_bitmap_num2};
+    drawStrScaledDown(200, 0, stage2, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+
+    
+    if (score == 0) {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num0};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    } else if (score == 1)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num1};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 2)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num2};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 3)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num3};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 4)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num4};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 5)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num5};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 6)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num6};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 7)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num7};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 8)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num8};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 9)
+    {
+        unsigned long *score[2] = {epd_bitmap_num0, epd_bitmap_num9};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+    else if (score == 10)
+    {
+        uart_puts("it is 10");
+        unsigned long *score[2] = {epd_bitmap_num1, epd_bitmap_num0};
+        drawStrScaledDown(150, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(score);
+    }
+
+    
 }
 
 void minusLife(int life)
@@ -352,6 +431,28 @@ void minusLife(int life)
     {
         unsigned long *life[2] = {epd_bitmap_num0, epd_bitmap_num0};
         drawStrScaledDown(975, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(life);
+    }
+}
+
+void drawLifeForStage2(int life)
+{
+
+    if (life == 2)
+    {
+        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num2};
+        drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(life);
+    }
+    else if (life == 1)
+    {
+        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num1};
+        drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(life);
+    } else if (life == 0)
+    {
+        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
+        drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
         freeMemory(life);
     }
 }
@@ -382,12 +483,12 @@ void gameStage2(int start, int life) {
     uart_puts("Stage 2 initiate");
     struct Sprite obstacleLeft;
     struct Sprite obstacleRight;
-    obstacleLeft.x = 175;
+    obstacleLeft.x = 30;
     obstacleLeft.y = 375;
     obstacleLeft.direction = 1;
-    obstacleRight.x = 675;
+    obstacleRight.x = 849;
     obstacleRight.y = 375;
-    obstacleRight.direction = 2;
+    obstacleRight.direction = 1;
     // Start with image at index 0
     int ballX = 550, ballY = 650;
     // direction is the direction of the ball, 0 is the ball fly directly upward.
@@ -501,16 +602,13 @@ void gameStage2(int start, int life) {
         }
 
         // score : 00
-        unsigned long *score[9] = {epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
-        drawStrScaledDown(0, 0, score, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        int score = 0; 
+        addScoreForStage2(score);
 
         freeMemory(score);
 
         // life : 3
-        unsigned long *life[8] = {epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num3};
-        drawStrScaledDown(850, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
-
-        freeMemory(life);
+        drawLifeForStage2(life);
 
         // move to the next stage
         start = start + 1;
@@ -687,9 +785,9 @@ void gameStage2(int start, int life) {
             // direction = tiles->direction;
             // Get direction from function detectCollision if the ball hit tiles.
             int checkCollideTile = 0;
+            direction = collisionWithObstacle(ballX, ballY, obstacleLeft.x, obstacleLeft.y, direction);
 
             direction = collisionWithObstacle(ballX, ballY, obstacleRight.x, obstacleRight.y, direction);
-            direction = collisionWithObstacle(ballX, ballY, obstacleLeft.x, obstacleLeft.y, direction);
             // direction = collisionWithObstacle(ballX, ballY, obstacleRight.x, obstacleRight.y, obstacleRight.direction);
 
             direction = detectCollision(ballX, ballY, direction, tiles, &checkCollideTile);
@@ -701,28 +799,15 @@ void gameStage2(int start, int life) {
 
                 if (scoreUser <= 10)
                 {
-                    addScore(scoreUser);
-                }
-                else if (scoreUser > 10 && scoreUser <= 20)
-                {
-                    addScore2(scoreUser);
-                }
-                else if (scoreUser > 20 && scoreUser <= 30)
-                {
-                    addScore3(scoreUser);
-                }
-                else if (scoreUser > 30 && scoreUser <= 40)
-                {
-                    addScore4(scoreUser);
+                    addScoreForStage2(scoreUser);
                 }
             }
 
-            // if (scoreUser > 2)
-            // {
-            //     start = start + 1;
-            // }
+            if (scoreUser > 3)
+            {
+                start = start + 1;
+            }
 
-            // uart_puts(direction);
             // Slow down the running speed of the program to allow hummand can see the ball.
             wait_msec(3000);
         }
@@ -736,13 +821,12 @@ void gameStage2(int start, int life) {
             drawPaddle(paddleX, 700);
             direction = 0;
             lifeUser = lifeUser - 1;
-            minusLife(lifeUser);
+            drawLifeForStage2(lifeUser);
 
-            // if (lifeUser == 0)
-            // {
-            //     start += 1;
-            //     break;
-            // }
+            if (lifeUser == 0)
+            {
+                start = start + 1; 
+            }
         }
 
         char c = getUart();
@@ -778,7 +862,14 @@ void gameStage2(int start, int life) {
         }
 
     }
+
+    drawBackground(0, 0);
+    unsigned long *gameover[12] = {epd_bitmap_g, epd_bitmap_a, epd_bitmap_m, epd_bitmap_e, epd_bitmap_space, epd_bitmap_o, epd_bitmap_v, epd_bitmap_e, epd_bitmap_r, epd_bitmap_colon};
+    drawStrScaledDown(400, 300, gameover, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+    freeMemory(gameover);
+
     
+     
 }
 
 
@@ -1209,7 +1300,4 @@ void main()
         uart_puts("Enter stage 2");
         gameStage2(start, lifeUser);
     }
-
-    
-    
 }
