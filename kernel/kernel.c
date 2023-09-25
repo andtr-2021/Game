@@ -356,6 +356,28 @@ void minusLife(int life)
     }
 }
 
+void drawLifeForStage2(int life)
+{
+
+    if (life == 2)
+    {
+        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num2};
+        drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(life);
+    }
+    else if (life == 1)
+    {
+        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num1};
+        drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(life);
+    } else if (life == 0)
+    {
+        unsigned long *life[10] = { epd_bitmap_s, epd_bitmap_c, epd_bitmap_o, epd_bitmap_r, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num0};
+        drawStrScaledDown(800, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
+        freeMemory(life);
+    }
+}
+
 struct Sprite
 {
     int x;
@@ -507,10 +529,7 @@ void gameStage2(int start, int life) {
         freeMemory(score);
 
         // life : 3
-        unsigned long *life[8] = {epd_bitmap_l, epd_bitmap_i, epd_bitmap_f, epd_bitmap_e, epd_bitmap_colon, epd_bitmap_num0, epd_bitmap_num3};
-        drawStrScaledDown(850, 0, life, 100, 100, COLOR_YELLOW, COLOR_BLUE, 4);
-
-        freeMemory(life);
+        drawLifeForStage2(life);
 
         // move to the next stage
         start = start + 1;
@@ -699,19 +718,19 @@ void gameStage2(int start, int life) {
 
                 if (scoreUser <= 10)
                 {
-                    // addScore(scoreUser);
+                    addScore(scoreUser);
                 }
                 else if (scoreUser > 10 && scoreUser <= 20)
                 {
-                    // addScore2(scoreUser);
+                    addScore2(scoreUser);
                 }
                 else if (scoreUser > 20 && scoreUser <= 30)
                 {
-                    // addScore3(scoreUser);
+                    addScore3(scoreUser);
                 }
                 else if (scoreUser > 30 && scoreUser <= 40)
                 {
-                    // addScore4(scoreUser);
+                    addScore4(scoreUser);
                 }
             }
 
@@ -738,7 +757,7 @@ void gameStage2(int start, int life) {
 
             if (lifeUser == 0)
             {
-                return; 
+                start = start + 1; 
             }
         }
 
@@ -775,6 +794,8 @@ void gameStage2(int start, int life) {
         }
 
     }
+
+    
     
 }
 
