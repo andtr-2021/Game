@@ -37,10 +37,10 @@ Our game is based on the classic arcade game released in 1976 by Atari called Br
 <img width="778" alt="Screenshot 2024-02-11 at 16 11 00" src="https://github.com/andtr-2021/bricks-breaker-baremetalos-game/assets/79509067/bf989edf-12c8-4d5e-ac34-2a67d8c14f46">
 
 `Level 2 Intro:`
+
 <img width="762" alt="Screenshot 2024-02-11 at 16 11 09" src="https://github.com/andtr-2021/bricks-breaker-baremetalos-game/assets/79509067/90849f4f-c40d-42cb-8c51-c7d0304e9f68">
 
 `Level 2: Game Play`
-<img width="1440" alt="Screenshot 2024-02-11 at 16 11 12" src="https://github.com/andtr-2021/bricks-breaker-baremetalos-game/assets/79509067/ea445f6d-4604-4941-b45f-73081bb01f83">
 
 <img width="864" alt="Screenshot 2024-02-11 at 16 11 21" src="https://github.com/andtr-2021/bricks-breaker-baremetalos-game/assets/79509067/c667bda6-b059-48c7-b26a-71e4fce2f1ff">
 
